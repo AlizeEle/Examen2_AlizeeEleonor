@@ -1,0 +1,238 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0d0d10;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 12px;
+  color: #ccc;
+}
+
+#gfx-main {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── Panels ─────────────────────────────────────────── */
+#panel-left,
+#panel-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 210px;
+  background: rgba(10,10,14,0.92);
+  backdrop-filter: blur(6px);
+  border-color: rgba(255,255,255,0.07);
+  border-style: solid;
+  overflow-y: auto;
+  padding: 12px 10px;
+  z-index: 10;
+}
+
+#panel-left  { left: 0;  border-right-width: 1px; }
+#panel-right { right: 0; border-left-width: 1px; }
+
+/* ── Typography ─────────────────────────────────────── */
+.p-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fff;
+  margin-bottom: 14px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.p-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #888;
+  margin-bottom: 6px;
+  margin-top: 2px;
+}
+
+.p-hint {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.p-section {
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ── Buttons ────────────────────────────────────────── */
+button {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+button:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.btn-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+.btn-row button { flex: 1; }
+
+.mode-btn.active {
+  background: #3a7eff;
+  border-color: #5a9eff;
+  color: #fff;
+}
+
+/* ── Scene list ─────────────────────────────────────── */
+#scene-list {
+  margin-bottom: 8px;
+}
+.scene-item {
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 11px;
+  color: #bbb;
+  transition: background 0.12s;
+  margin-bottom: 2px;
+}
+.scene-item:hover   { background: rgba(255,255,255,0.08); }
+.scene-item.active  {
+  background: rgba(58,126,255,0.25);
+  color: #fff;
+  border-left: 2px solid #3a7eff;
+  padding-left: 6px;
+}
+
+/* ── Sliders ─────────────────────────────────────────── */
+.slider-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 34px;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+.sl-label {
+  font-size: 10px;
+  color: #999;
+  white-space: nowrap;
+}
+.sl-val {
+  font-size: 10px;
+  color: #aaa;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3a7eff;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3a7eff;
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+/* ── Color pickers ───────────────────────────────────── */
+.color-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 4px;
+}
+.color-row span { font-size: 10px; color: #999; }
+input[type="color"] {
+  width: 36px;
+  height: 22px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px;
+  background: none;
+  cursor: pointer;
+  padding: 1px;
+}
+
+/* ── Checkbox ───────────────────────────────────────── */
+.chk-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #bbb;
+  cursor: pointer;
+  margin-top: 5px;
+}
+input[type="checkbox"] {
+  accent-color: #3a7eff;
+  width: 13px;
+  height: 13px;
+}
+
+/* ── File inputs ─────────────────────────────────────── */
+input[type="file"] {
+  font-size: 10px;
+  color: #aaa;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* ── Scrollbar ───────────────────────────────────────── */
+#panel-left::-webkit-scrollbar,
+#panel-right::-webkit-scrollbar { width: 4px; }
+#panel-left::-webkit-scrollbar-track,
+#panel-right::-webkit-scrollbar-track { background: transparent; }
+#panel-left::-webkit-scrollbar-thumb,
+#panel-right::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+/* ── Remove button override ─────────────────────────── */
+#btn-remove {
+  background: rgba(255,60,60,0.1);
+  border-color: rgba(255,60,60,0.3);
+  color: #f77;
+}
+#btn-remove:hover {
+  background: rgba(255,60,60,0.2);
+  border-color: rgba(255,60,60,0.5);
+}
